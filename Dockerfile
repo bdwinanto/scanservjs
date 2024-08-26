@@ -99,13 +99,13 @@ FROM scanservjs-core AS scanservjs-user2001
 # scanservjs
 ARG UID=2001
 ARG GID=2001
-ARG UNAME=scanservjs
+ARG UNAME=scanserv
 
 # Create a known user, and change ownership on relevant files (the entrypoint
 # script and $APP_DIR must be readable to run the service itself, and some
 # config files need write access).
-RUN groupadd -g $GID \
-  && useradd -o -u $UID -g $GID -m -s /bin/bash \
+RUN groupadd -g $GID -o $UNAME\
+  && useradd -o -u $UID -g $GID -m -s /bin/bash $UNAME\
   && chown -R $UID:$GID /entrypoint.sh /var/lib/scanservjs /etc/sane.d/net.conf /etc/sane.d/airscan.conf
 USER $UNAME
 
