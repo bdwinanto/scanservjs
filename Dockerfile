@@ -104,8 +104,8 @@ ARG UNAME=scanservjs
 # Create a known user, and change ownership on relevant files (the entrypoint
 # script and $APP_DIR must be readable to run the service itself, and some
 # config files need write access).
-RUN groupadd -g $GID -o $UNAME \
-  && useradd -o -u $UID -g $GID -m -s /bin/bash $UNAME \
+RUN groupadd -g $GID \
+  && useradd -o -u $UID -g $GID -m -s /bin/bash \
   && chown -R $UID:$GID /entrypoint.sh /var/lib/scanservjs /etc/sane.d/net.conf /etc/sane.d/airscan.conf
 USER $UNAME
 
