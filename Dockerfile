@@ -110,7 +110,7 @@ RUN groupadd -g $GID -o $UNAME \
 USER $UNAME
 
 # default build
-FROM scanservjs-core
+FROM scanservjs-user2001
 
 # hplip image
 #
